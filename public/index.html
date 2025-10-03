@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>LAN Chat + File Sharing</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- LOGIN SCREEN -->
+  <div id="login-screen" class="card">
+    <h2>Welcome to LAN Chat</h2>
+    <p>Enter your name to join the chat</p>
+    <input type="text" id="username" placeholder="Your name..." />
+    <button onclick="setUsername()">Join</button>
+  </div>
+
+  <!-- CHAT SCREEN -->
+  <div id="chat-screen" style="display:none;">
+    <header>
+      <h2>LAN CHAT</h2>
+      <span id="user-label"></span>
+    </header>
+
+    <div id="main-container">
+      <!-- LEFT PANEL -->
+      <div id="left-panel">
+        <div class="section">
+          <h3>Send Message</h3>
+          <input id="msg" type="text" placeholder="Type a message..." />
+          <button onclick="sendMessage()">Send</button>
+        </div>
+
+        <div class="section">
+          <h3>Upload File</h3>
+          <div id="drop-area" class="dropzone" onclick="triggerFileBrowse()">
+            <div class="dz-icon"><i class='bx bxs-cloud-upload'></i></div>
+            <div class="dz-text">
+              <strong>Drag & drop</strong> files here
+              <span>or click to browse</span>
+            </div>
+            <input type="file" id="fileInput" multiple style="display:none" />
+          </div>
+          <div id="selected-files"></div>
+          <button onclick="sendFile()">Upload</button>
+        </div>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div id="right-panel">
+        <h3>Chat Messages</h3>
+        <div id="chat-box"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
